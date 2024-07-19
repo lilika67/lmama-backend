@@ -27,7 +27,7 @@ app.use("/api/v1", allRoutes);
 app.listen(PORT, () => {
   mongoose.connect(process.env.MONGODB_URL, {
     ssl: true,
-    tlsAllowInvalidCertificates: true,  // Use this only for debugging purposes; remove for production
+    tlsAllowInvalidCertificates: true, 
   })
   .then(() => {
     console.log(`Server is running on port ${PORT}`);

@@ -6,7 +6,7 @@ import  nodemailer from 'nodemailer';
             service: 'gmail',
             auth: {
                 user: 'kayitesililiane73@gmail.com',
-                pass: 'pnseyximagwshbkj',
+                pass: 'lrlm lilh uxpz mkuh',
                 host:'smtp.gmail.com',
             },
             tls: {
@@ -23,7 +23,7 @@ import  nodemailer from 'nodemailer';
 
         await transporter.sendMail(options, function(error, infor) {
             if (error) {
-                console.log("Failed to save email: "+error);
+                console.log("Failed to send email: "+error);
                 return error;
             } else {
                 console.log("Email Sent: "+infor.response);
