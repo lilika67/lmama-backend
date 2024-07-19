@@ -23,8 +23,9 @@ export const SignUp = async (req, res, next) => {
 
       const savedUser = await newUser.save();
 
-      const subject = "Welcome to MyBrand";
-      const message = "You have signed up successfully";
+      // Use the Name to personalize the email
+      const subject = `Welcome to LMAMA`;
+      const message = `Dear ${Name},\n\nYou have successfully created your account! Thank you for joining the large community of Lmama. We are happy to welcome you aboad!`;
 
       await sendEmail(email, subject, message);
       return res.status(200).json({ message: "Account created!", savedUser });
@@ -53,26 +54,27 @@ export const SignIn = async (req, res, next) => {
     }
 
     res.status(200).json({ message: "You signed in successfully", user: validUser });
-    console.log(validUser);
+    
   } catch (error) {
     console.error(error);
     res.status(500).send(error.message);
   }
 };
+
 export const getUsers = async (req, res, next) => {
   try {
-    var allUsers = await UserModel.find({});
-    if(!allUsers){
+    const allUsers = await UserModel.find({});
+    if(!allUsers || allUsers.length === 0){
       return res.status(404).json({
-        
-        message:"No users found!"
+        message: "No users found!"
       });
-    } else
-    res.status(200).send({
-      allUsers
-    });
+    } else {
+      res.status(200).send({
+        allUsers
+      });
+    }
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).send(error);
   }
 };
