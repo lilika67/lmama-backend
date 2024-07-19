@@ -9,10 +9,9 @@ import bodyParser from "body-parser";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Default to 3000 if PORT is not set
+const PORT = process.env.PORT || 3000;
 
 app.use(cors({ origin: "*" }));
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -27,10 +26,8 @@ app.use("/api/v1", allRoutes);
 
 app.listen(PORT, () => {
   mongoose.connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     ssl: true,
-    tlsAllowInvalidCertificates: true,
+    tlsAllowInvalidCertificates: true,  // Use this only for debugging purposes; remove for production
   })
   .then(() => {
     console.log(`Server is running on port ${PORT}`);
