@@ -13,3 +13,13 @@ export const addTestimony = async(req,res)=>{
     console.log(error);
   }
 }
+
+export const getTestimonial = async(req,res)=>{
+  try{
+    const allTestimonials = await testimonialModel.find({});
+    res.status(200).json({"message": allTestimonials});
+
+  }catch (error){
+    console.log(error);
+  }
+}

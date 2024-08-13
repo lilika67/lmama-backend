@@ -27,9 +27,7 @@ export const sendMessage= async (req, res) => {
       fullName: fullName,
       email:email,
       message: message,
-      
-      
-      
+    
     });
 
     
@@ -44,7 +42,6 @@ export const sendMessage= async (req, res) => {
     res.status(500).json({ error})
   }
 
-  
 };
 
 export const deleteMessages = async (req, res) => {
